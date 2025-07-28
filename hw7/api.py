@@ -16,7 +16,7 @@ def prompt_guess(game_id):
     while True:
         guess = input("guess 4-digit number (comprises 1 to 6)").strip()
         
-        # اعتبارسنجی حدس
+      
         if len(guess) != 4:
             print("number should have four digits")
             continue
@@ -30,15 +30,14 @@ def prompt_guess(game_id):
             print("repeated digit is not allowed")
             continue
 
-        # ارسال حدس و دریافت پاسخ
         result = send_guess(guess= guess, game_id= game_id)
         
-        # نمایش نتیجه
+         
         blacks = result.get("black", '*')
         whites = result.get("white", '*')
         print(f"correct digit value and position BLACK: {blacks}, just correct digit value (wrong position) WHITE: {whites}")
 
-        # اگر بردیم، حلقه را بشکن
+        
         if blacks == 4:
             print("🎉horray")
             break
