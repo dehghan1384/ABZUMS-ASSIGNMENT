@@ -71,8 +71,8 @@ for d in range(days):
 df = pd.DataFrame(rows).sample(frac=1).reset_index(drop=True)
 df["timestamp"] = pd.to_datetime(df["timestamp"])
 df["engagement_score"] = df["event_type"].map(EVENT_WEIGHTS).fillna(0).astype(int)
-df["watch_time_sec"] = pd.to_numeric(df["watch_time_sec"], errors="coerce")
-df["video_duration_sec"] = pd.to_numeric(df["video_duration_sec"], errors="coerce")
+df["watch_time_sec"] = pd.to_numeric(df["watch_time_sec"])
+df["video_duration_sec"] = pd.to_numeric(df["video_duration_sec"])
 df.to_csv("synthetic_events.csv", index=False)
 
 df["date"] = df["timestamp"].dt.date
